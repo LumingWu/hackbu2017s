@@ -1,0 +1,3 @@
+Takes in Professor open times (list)
+  Takes in student open times (list) & Topic
+
