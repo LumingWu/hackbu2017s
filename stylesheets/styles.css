@@ -1,7 +1,40 @@
-input{
-    min-width: 30px;
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
-.input-group{
+.container{
+    height: 100%;
+    background-color: #195599;
+}
 
+/* enable absolute positioning */
+.inner-addon {
+    position: relative;
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+
+#login > .inner-addon {
+    display: inline-block;
+    max-width: 150px;
+}
+
+td {
+    height: 10px;
 }
