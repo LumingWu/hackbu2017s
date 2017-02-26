@@ -15,6 +15,7 @@ class Student(object) :
         # {day, timest, timeend}
         # {day: 0-6, start sun; time: float, 0 to 23., topic: string indicating topic}
 
+#def coalesceV2(dict: )
 
 def coalesce(listOfTuples: List, topics: List):
     # topic preserved
@@ -41,7 +42,6 @@ def coalesce(listOfTuples: List, topics: List):
         finalList.append(bitmask)
 
     return finalList
-
 
 
 def start(prof: Prof, studs: List[Student]):
@@ -87,3 +87,4 @@ if __name__ == '__main__':
 
     res = start(p, [s1, s2])
     print(res)
+    #r2 = coalesce(res, )
