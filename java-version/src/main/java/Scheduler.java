@@ -132,9 +132,18 @@ public class Scheduler {
                     continue;
                 }
                 
-                result.get(i).get(j).val1 = keys.get(theMaxSoFarIndex);
-                int r = result.get(i).get(j).val2;
-                result.get(i).get(j).val2 = r + max;
+                Pair<String, Integer> newval = new Pair<>();
+                
+                newval.val1 = keys.get(theMaxSoFarIndex);
+                // get topic index . get day . get hour = int
+                Integer r = allTimes.get(theMaxSoFarIndex).get(i).get(j);
+                if (r == null) {
+                    newval.val2 = 0;
+                } else {
+                    newval.val2 = r;
+                }
+                result.get(i).set(j, newval);
+                
                 
             }
         }
@@ -183,13 +192,19 @@ public class Scheduler {
         }
         
         List<List<Pair<String, Integer>>> r2 = coalesce(res);
-        System.out.println("Sun\t\tMon\t\tTu\t\tWed\t\tTh\t\tFri\t\tSa");
+        System.out.println("\tSun\t\tMon\t\tTu\t\tWed\t\tTh\t\tFri\t\tSa");
         for (int j = 0; j < r2.get(0).size() ; j++) {
-            
+            float time = j / 4.0f;
+            System.out.printf("%.2f\t", time);
             for (int i = 0; i < r2.size(); i++) {
-                System.out.print(r2.get(i).get(j).val1 + "\t" + r2.get(i).get(j).val2 );
+                // Time calc
+                
+                System.out.print(r2.get(i).get(j).val1 + "\t" + r2.get(i).get(j).val2 + "\t");
             }
             System.out.println();
         }
+        
+        
+        
     }
 }
