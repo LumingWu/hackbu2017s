@@ -15,18 +15,38 @@ class Student(object) :
         # {day, timest, timeend}
         # {day: 0-6, start sun; time: float, 0 to 23., topic: string indicating topic}
 
+#def coalesceV2(dict: )
 
-def coalesce(listOfTuples):
+def coalesce(listOfTuples: List, topics: List):
     # topic preserved
     # [0, 1, 2] + [0, 2, 4] -> [0, 1, 4]
+    finalList = []
     newlist = []
     oldList = []
-    for i in listOfTuples:
-        0
+    bitmask = [24*4] # for 15 min increment
+    # for 10-12, set (10 * 4,
+    for daynum in range(0, 7):
+        thisset = []
+        bitmask = [24 * 4] # : List[List]  # for 15 min increment
+        for tup in listOfTuples:
+            if tup[0] == daynum:
+                for j in range(tup[1] * 4, tup[2] * 4):
+                    if bitmask[j] is None:
+                        bitmask[j] = [tup[3]]
+                    else:
+                        if tup[3] not in bitmask[j]:
+                            bitmask[j].append(tup[3])
+        for i in bitmask:
+            if bitmask[i] is not None:
+                bitmask[i] = bitmask[i][0]
+        finalList.append(bitmask)
+
+    return finalList
 
 
 def start(prof: Prof, studs: List[Student]):
     counter = {} # for diff topics
+    #topics = []
     for tup in prof.timelist:
         # all time blocks in prof
         for stu in studs:
@@ -67,3 +87,4 @@ if __name__ == '__main__':
 
     res = start(p, [s1, s2])
     print(res)
+    #r2 = coalesce(res, )

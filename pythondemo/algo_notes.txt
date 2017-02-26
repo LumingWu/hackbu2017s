@@ -1,3 +1,18 @@
 Takes in Professor open times (list)
   Takes in student open times (list) & Topic
 
+Coalescing:
+
+Have:
+Day
+Topic
+Times
+
+
+Mon
+
+
+11 hw    exam
+12       exam
+13 exam  exam
+14 exam  hw
