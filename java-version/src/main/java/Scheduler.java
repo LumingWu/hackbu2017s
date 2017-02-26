@@ -42,29 +42,44 @@ public class Scheduler {
     }
 
     // Needs to return 7*(24*4) array with strings to refer times.
-    public List<List<Pair<String, Integer>>> coalesce(HashMap<String, List<StudentTimes>> times) {
+    
+    public static List<List<Pair<String, Integer>>> coalesce(HashMap<String, List<StudentTimes>> times) {
         // 1: For all days, for all keys, Fill a bitmap for that key.
+        
+        /*
+        What to do:
+        */
+        
         String key;
         List<List<Pair<String, Integer>>> result = new ArrayList<>();
 
         for (int i = 0; i < 7; i++) {
+            // Day
             List<Pair<String, Integer>> dl = new ArrayList<>();
             for (int j = 0; j < 24 * 4; j++) {
-                dl.add(null);
+                // Hour
+                dl.add(new Pair<String, Integer>());
             }
             result.add(dl);
         }
 
+        // Temporary
         List<StudentTimes> val;
+        // For topics
         List<String> keys = new ArrayList<>();
+        // Piling location
+        List<List<List<Integer>>> allTimes = new ArrayList<List<List<Integer>>>();
 
-        List
+        // List
 
         for (Map.Entry<String,List<StudentTimes>> entry : times.entrySet()) {
+            // topics
             List<List<Integer>> daylist = new ArrayList<>();
             for (int i = 0; i < 7; i++) {
+                // days
                 List<Integer> dl = new ArrayList<>();
                 for (int j = 0; j < 24 * 4; j++) {
+                    // hours
                     dl.add(0);
                 }
                 daylist.add(dl);
@@ -76,16 +91,55 @@ public class Scheduler {
             val = entry.getValue();
 
             for (StudentTimes stimes: val) {
+                if (!stimes.topic.equals(key))
+                    continue;
+                // List of input student times
                 for (int i = stimes.time_st * 4; i < stimes.time_en * 4; i++) {
+                    // For all 15 min increments in block
                     Integer va = daylist.get(stimes.day).get(i);
+                    // Get value of that block
                     daylist.get(stimes.day).set(i, va+1);
+                    // Add one
                 }
+                // All blocks contain 0 for not open, 1 for open.
             }
-
+            // Number count list itself appended to list of all number lists.
+            allTimes.add(daylist);
         }
+        
+        // Take all these lists go through by 15 minute block. Look at all diff keys, add whichever is better.
+        
+        
 
-
-
+        // Now take the allList and count. alllist > topic > day > hour
+        for(int i = 0; i < allTimes.get(0).size(); i++) {
+            for ( int j = 0; j < 24 * 4; j++) {
+                int[] counts = new int[keys.size()];
+                int max = 0, theMaxSoFarIndex = -1;
+                
+                for (int k = 0; k < keys.size(); k++) {
+                    // Do the differential count here.
+                    counts[k] = allTimes.get(k).get(i).get(j);
+                }
+                
+                for (int a = 0; a < counts.length; a++) {
+                    if (counts[a] > max) {
+                        max = counts[a];
+                        theMaxSoFarIndex = a;
+                    }
+                }
+                // mark maximum and write to final
+                if (theMaxSoFarIndex == -1) {
+                    continue;
+                }
+                
+                result.get(i).get(j).val1 = keys.get(theMaxSoFarIndex);
+                int r = result.get(i).get(j).val2;
+                result.get(i).get(j).val2 = r + max;
+                
+            }
+        }
+        
         return result;
     }
 
@@ -125,6 +179,16 @@ public class Scheduler {
 
             for (StudentTimes v: value) {
                 System.out.print(v + ", ");
+            }
+            System.out.println();
+        }
+        
+        List<List<Pair<String, Integer>>> r2 = coalesce(res);
+        System.out.println("Sun\t\tMon\t\tTu\t\tWed\t\tTh\t\tFri\t\tSa");
+        for (int j = 0; j < r2.get(0).size() ; j++) {
+            
+            for (int i = 0; i < r2.size(); i++) {
+                System.out.print(r2.get(i).get(j).val1 + "\t" + r2.get(i).get(j).val2 );
             }
             System.out.println();
         }

@@ -18,7 +18,7 @@ public class User implements Serializable{
         else{
             users = Key.create(Users.class, "default");
         }
-    
+    }
     public User(String email, Long id){
         this(email);
         this.id = id;
