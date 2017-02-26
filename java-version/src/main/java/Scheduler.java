@@ -41,6 +41,54 @@ public class Scheduler {
         return counter;
     }
 
+    // Needs to return 7*(24*4) array with strings to refer times.
+    public List<List<Pair<String, Integer>>> coalesce(HashMap<String, List<StudentTimes>> times) {
+        // 1: For all days, for all keys, Fill a bitmap for that key.
+        String key;
+        List<List<Pair<String, Integer>>> result = new ArrayList<>();
+
+        for (int i = 0; i < 7; i++) {
+            List<Pair<String, Integer>> dl = new ArrayList<>();
+            for (int j = 0; j < 24 * 4; j++) {
+                dl.add(null);
+            }
+            result.add(dl);
+        }
+
+        List<StudentTimes> val;
+        List<String> keys = new ArrayList<>();
+
+        List
+
+        for (Map.Entry<String,List<StudentTimes>> entry : times.entrySet()) {
+            List<List<Integer>> daylist = new ArrayList<>();
+            for (int i = 0; i < 7; i++) {
+                List<Integer> dl = new ArrayList<>();
+                for (int j = 0; j < 24 * 4; j++) {
+                    dl.add(0);
+                }
+                daylist.add(dl);
+            }
+            // now go through our list and add them.
+
+            key = entry.getKey();
+            keys.add(key);
+            val = entry.getValue();
+
+            for (StudentTimes stimes: val) {
+                for (int i = stimes.time_st * 4; i < stimes.time_en * 4; i++) {
+                    Integer va = daylist.get(stimes.day).get(i);
+                    daylist.get(stimes.day).set(i, va+1);
+                }
+            }
+
+        }
+
+
+
+        return result;
+    }
+
     public static void main(String[] args)
     {
         Professor p = new Professor();
