@@ -1,3 +1,5 @@
+package com.guestbook.controller;
+
 /**
  * Created by Frank on 2/25/2017.
  */

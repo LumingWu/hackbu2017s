@@ -1,3 +1,5 @@
+package com.guestbook.controller;
+
 /**
  * Created by Frank on 2/25/2017.
  */
@@ -192,17 +194,21 @@ public class Scheduler {
         }
         
         List<List<Pair<String, Integer>>> r2 = coalesce(res);
-        System.out.println("\tSun\t\tMon\t\tTu\t\tWed\t\tTh\t\tFri\t\tSa");
+        
+        StringBuilder out = new StringBuilder();
+        
+        out.append("\tSun\t\tMon\t\tTu\t\tWed\t\tTh\t\tFri\t\tSa");
         for (int j = 0; j < r2.get(0).size() ; j++) {
             float time = j / 4.0f;
-            System.out.printf("%.2f\t", time);
+            out.append(String.format("%.2f\t", time));
             for (int i = 0; i < r2.size(); i++) {
                 // Time calc
                 
-                System.out.print(r2.get(i).get(j).val1 + "\t" + r2.get(i).get(j).val2 + "\t");
+                out.append(r2.get(i).get(j).val1 + "\t" + r2.get(i).get(j).val2 + "\t");
             }
-            System.out.println();
+            out.append("\n");
         }
+        System.out.print(out);
         
         
         
