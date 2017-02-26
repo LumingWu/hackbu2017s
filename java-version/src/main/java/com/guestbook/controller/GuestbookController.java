@@ -107,6 +107,7 @@ public class GuestbookController {
             }
             out.append("\n");
         }
+        
         return out.toString();
     }
     

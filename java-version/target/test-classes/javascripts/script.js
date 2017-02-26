@@ -17,9 +17,10 @@ $(document).ready(function(){
                 appointmentdisplay.css("visibility", "hidden");
             }
             else{
-                var JSON_obj = JSON.parse(data)["data"];
-                for(var interval in JSON_obj){
-                    tablemodify(interval[0], interval[1], interval[2], interval[3], interval[4]);
+                var JSON_obj = JSON.parse(data).data;
+                for(var i = 0; i < JSON_obj.length; i++){
+                    console.log(JSON_obj[i][0] + JSON_obj[i][1] + JSON_obj[i][2] + JSON_obj[i][3] + JSON_obj[i][4]);
+                    tablemodify(JSON_obj[i][0], JSON_obj[i][1], JSON_obj[i][2], JSON_obj[i][3], JSON_obj[i][4]);
                 }
                 appointmentdisplay.css("visibility", "visible");
             }
@@ -59,7 +60,7 @@ $(document).ready(function(){
     $("#appointmentbutton").click(function(){
         $.get("/schedule?starttime=" + starttime.val() + "&endtime=" + endtime.val() + "&description=" + description.val()
                 , function(data){
-                    
+                    /* Not Do Anything */
                 });
     });
     
