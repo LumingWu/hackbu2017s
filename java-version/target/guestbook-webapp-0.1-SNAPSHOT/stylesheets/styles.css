@@ -2,12 +2,29 @@ html, body{
     margin: 0;
     padding: 0;
     height: 100%;
-}
-
-.container{
-    min-height: 100%;
     background-color: #195599;
 }
+
+table{
+    margin: 0 auto;
+    background-color: white;
+}
+
+td {
+   width: 125px;
+   border:1px solid black;
+   text-align: center;
+   height: 32px;
+
+}
+
+th {
+   width: 125px;
+   border:1px solid black;
+   text-align: center;
+   height: 32px;
+}
+
 
 /* enable absolute positioning */
 .inner-addon {
@@ -29,17 +46,10 @@ html, body{
 .left-addon input  { padding-left:  30px; }
 .right-addon input { padding-right: 30px; }
 
-
-#logindisplay > .inner-addon {
-    display: inline-block;
-    max-width: 150px;
-}
-
-#userdisplay > .inner-addon {
-    display: inline-block;
-    max-width: 150px;
-}
-
 span{
     font-size: 20px;
+}
+
+#appointmentdisplay {
+    visibility: hidden;
 }

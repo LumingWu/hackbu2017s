@@ -58,7 +58,7 @@ public class Scheduler {
         List<StudentTimes> val;
         List<String> keys = new ArrayList<>();
 
-        List
+        //List
 
         for (Map.Entry<String,List<StudentTimes>> entry : times.entrySet()) {
             List<List<Integer>> daylist = new ArrayList<>();
