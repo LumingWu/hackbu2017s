@@ -70,7 +70,6 @@ public class Scheduler {
         // Piling location
         List<List<List<Integer>>> allTimes = new ArrayList<List<List<Integer>>>();
 
-        // List
 
         for (Map.Entry<String,List<StudentTimes>> entry : times.entrySet()) {
             // topics

@@ -1,0 +1,55 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #195599;
+}
+
+table{
+    margin: 0 auto;
+    background-color: white;
+}
+
+td {
+   width: 125px;
+   border:1px solid black;
+   text-align: center;
+   height: 32px;
+
+}
+
+th {
+   width: 125px;
+   border:1px solid black;
+   text-align: center;
+   height: 32px;
+}
+
+
+/* enable absolute positioning */
+.inner-addon {
+    position: relative;
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+span{
+    font-size: 20px;
+}
+
+#appointmentdisplay {
+    visibility: hidden;
+}

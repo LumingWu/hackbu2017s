@@ -12,12 +12,13 @@ public class User implements Serializable{
     public String email;
 
     public User(String email){
-        if(email != ""){
-            users = Key.create(Users.class, email);
-        }
-        else{
+        if(email.equals("")){
             users = Key.create(Users.class, "default");
         }
+        else{
+            users = Key.create(Users.class, email);
+        }
+        this.email = email;
     }
     public User(String email, Long id){
         this(email);

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class GuestbookController {
     
+    private static final String users_name = "users_name";
     
     @RequestMapping("/")
     public String home(HttpServletRequest request){
@@ -39,13 +40,28 @@ public class GuestbookController {
         return "redirect:/";
     }
     
-    @RequestMapping(value = "/search")
+    @RequestMapping(value = "/search", produces = "application/json")
     @ResponseBody
     public String getSchedule(
             @RequestParam("email") String email
             ){
+        System.out.println("Email: " + email);
+        return "";
+    }
+    
+    @RequestMapping(value = "/schedule", produces = "application/json")
+    @ResponseBody
+    public String schedule(
+        @RequestParam("starttime") String starttime,
+        @RequestParam("endtime") String endtime,
+        @RequestParam("desciption") String description){
         
         return "";
     }
-
+    @RequestMapping(value = "/testrun")
+    public void testrun(){
+        
+    }
+    
+    
 }
