@@ -34,6 +34,7 @@
             </div>
             <br>
             <div id="appointmentdisplay">
+                <span>Start Time:</span>
                 <select id="starttime">
                     <option value="0">0:00</option>
                     <option value="15">0:15</option>
@@ -132,6 +133,7 @@
                     <option value="1410">23:30</option>
                     <option value="1425">23:45</option>
                 </select>
+                <span>End Time:</span>
                 <select id="endtime">
                     <option value="0">0:00</option>
                     <option value="15">0:15</option>

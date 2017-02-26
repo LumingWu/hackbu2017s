@@ -13,19 +13,15 @@ $(document).ready(function(){
     $("#searchbutton").click(function(){
         $.get("/search?email=" + search.val(), function(data){
             if(data === ""){
-                /* -- Test -- */
-                if(search.val() === "test@example.com"){
-                    tablemodify(1, 4, "Description", "green", 10);
-                }
-                else{
-                    cleantable();
-                }
-                /* -- Test -- */
-                appointmentdisplay.css("visibility", "visible");
+                cleantable();
+                appointmentdisplay.css("visibility", "hidden");
             }
             else{
+                var JSON_obj = JSON.parse(data);
+                for(var interval in JSON_obj["data"]){
+                    tablemodify(interval[0], interval[1], interval[2], interval[3], interval[4]);
+                }
                 appointmentdisplay.css("visibility", "visible");
-                
             }
         });
     });
