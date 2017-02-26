@@ -9,21 +9,25 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-xs-10">
-            <br>
-            <form onsubmit="login" method="post" id="login">
-                    <div class="inner-addon left-addon">
-                        <i class="glyphicon glyphicon-user"></i>
-                        <input type="text" name="username" placeholder="username" class="form-control"
-                               maxlength="30"/>
-                    </div>
-                    <div class="inner-addon left-addon">
-                        <i class="glyphicon glyphicon-lock"></i>
-                        <input type="text" name="password" placeholder="password" class="form-control"
-                               maxlength="30"/>
-                    </div>
-                    <input type="submit" value="Login">
-            </form>
+        <div class="col-xs-12">
+            <div id="logindisplay">
+                <br>
+                <div class="inner-addon left-addon">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <input type="text" id="username" placeholder="username" class="form-control"
+                           maxlength="30"/>
+                </div>
+                <div class="inner-addon left-addon">
+                    <i class="glyphicon glyphicon-lock"></i>
+                    <input type="text" id="password" placeholder="password" class="form-control"
+                           maxlength="30"/>
+                </div>
+                <button id="loginbutton" class="btn btn-default">Login</button>
+            </div>
+            <div id="userdisplay">
+                <br>
+                <span id="name"></span> <button id="logoutbutton" class="btn btn-default">Logout</button>
+            </div>
         </div>
 
     </div>
