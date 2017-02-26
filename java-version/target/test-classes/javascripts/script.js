@@ -17,8 +17,8 @@ $(document).ready(function(){
                 appointmentdisplay.css("visibility", "hidden");
             }
             else{
-                var JSON_obj = jQuery.parseJSON(data);
-                for(var interval in JSON_obj.data){
+                var JSON_obj = JSON.parse(data)["data"];
+                for(var interval in JSON_obj){
                     tablemodify(interval[0], interval[1], interval[2], interval[3], interval[4]);
                 }
                 appointmentdisplay.css("visibility", "visible");

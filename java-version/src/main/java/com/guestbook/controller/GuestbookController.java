@@ -49,7 +49,7 @@ public class GuestbookController {
         return "redirect:/";
     }
     
-    @RequestMapping(value = "/search", produces = "application/json")
+    @RequestMapping(value = "/search", produces = "text/plain")
     @ResponseBody
     public String getSchedule(
             @RequestParam("email") String email
@@ -57,13 +57,13 @@ public class GuestbookController {
         /* --Test-- */
         
         /* --Test-- */
-        return "{data:["
-                + "[0, 0, \"Sample Description1\", \"green\", 0],"
-                + "[1, 1, \"Sample Description2\", \"green\", 0]"
+        return "{\\\"data\\\":["
+                + "[0, 0, \\\"Sample Description1\\\", \\\"green\\\", 0],"
+                + "[1, 1, \\\"Sample Description2\\\", \\\"green\\\", 0]"
                 + "]}";
     }
     
-    @RequestMapping(value = "/schedule", produces = "application/json")
+    @RequestMapping(value = "/schedule", produces = "textp/lain")
     @ResponseBody
     public String schedule(
         @RequestParam("starttime") String starttime,
@@ -73,7 +73,7 @@ public class GuestbookController {
         return "";
     }
     
-    @RequestMapping(value = "/testrun", produces = "text/html")
+    @RequestMapping(value = "/testrun", produces = "text/plain")
     public String testrun(){
         System.out.println("---Welcome to testrun---");
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
